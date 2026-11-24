@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cas 01 · Cop de calor</title>
+<style>
+:root{--ink:#24313b;--muted:#687680;--paper:#f3f6f4;--panel:#fff;--line:#dce4df;--teal:#176b67;--teal2:#e2f2ee;--orange:#d97732;--red:#b83c3c}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.45 system-ui,-apple-system,Segoe UI,sans-serif}
+header{height:auto;min-height:76px;padding:15px 24px;background:#fff;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:16px}
+h1{font-size:23px;margin:0}header p{margin:3px 0 0;color:var(--muted);font-size:13px}.pill{background:#fff0df;color:#8a4a16;padding:6px 11px;border-radius:99px;font-size:11px;font-weight:800;white-space:nowrap}
+main{max-width:1600px;margin:16px auto;padding:0 16px;display:grid;grid-template-columns:245px minmax(420px,1fr) 300px;gap:14px;align-items:start}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 3px 15px #24313b08}
+.panelhead{padding:12px 14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px}.panelhead h2{font-size:14px;margin:0}.small{font-size:11px;color:var(--muted)}
+.content{padding:13px 14px}.leftcol,.rightcol{display:flex;flex-direction:column;gap:12px}
+.viewer{position:sticky;top:12px}.scenehead{padding:13px 16px;display:flex;justify-content:space-between;align-items:center;background:#fff;border-bottom:1px solid var(--line)}.scenehead h2{font-size:16px;margin:0}.scene{position:relative;background:#f5d99d;aspect-ratio:16/9;min-height:390px;overflow:hidden;touch-action:pan-y}
+.scene svg{width:100%;height:100%;display:block}.hotspot{cursor:grab;outline:none}.hotspot:active{cursor:grabbing}.hotspot:focus .shape,.hotspot:hover .shape{stroke:#fff;stroke-width:4;filter:drop-shadow(0 2px 3px #24313b55)}.hotspot.done .shape{stroke:#176b67;stroke-width:4}.scene-label{font:700 13px system-ui;fill:#24313b;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.dropzone{fill:transparent;stroke:transparent;stroke-width:4;stroke-dasharray:9 6;pointer-events:all}.scene.dragover .dropzone{stroke:#176b67;fill:#176b6718}
+.scenehint{padding:10px 14px;background:#f5faf7;border-top:1px solid var(--line);font-size:12px;color:#45635b}
+.task{display:flex;gap:8px;padding:9px 0;border-bottom:1px solid #edf0ee;align-items:flex-start}.task:last-child{border:0}.check{width:19px;height:19px;border:1.5px solid #b8c3bd;border-radius:50%;flex:none;display:grid;place-items:center;font-size:11px;color:white}.task.done .check{background:var(--teal);border-color:var(--teal)}.task strong{font-size:12px;display:block}.task small{color:var(--muted);font-size:11px}
+.inventory{display:flex;flex-direction:column;gap:7px}.item{display:flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:9px;padding:9px;background:#fff;font-size:12px;cursor:grab;user-select:none}.item:active{cursor:grabbing}.item.selected{border:2px solid var(--teal);background:var(--teal2);padding:8px}.item .emoji{font-size:19px;width:26px;text-align:center}.item small{display:block;color:var(--muted);font-size:10px}.item[draggable=true]:hover{border-color:var(--teal)}
+#message{min-height:90px;background:#f0f5f3;border-radius:9px;padding:11px;font-size:12px}#message.warn{background:#fff0e8;color:#873d23}#message.good{background:#e5f4ed;color:#1c5b43}
+.status{display:grid;grid-template-columns:1fr 1fr;gap:8px}.stat{background:#f5f7f6;border-radius:9px;padding:9px}.stat b{display:block;font-size:17px}.stat span{font-size:10px;color:var(--muted)}.progress{height:7px;background:#e8ece9;border-radius:10px;overflow:hidden;margin-top:8px}.progress>i{display:block;height:100%;width:0;background:var(--teal);transition:width .25s}
+button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:8px;padding:8px 10px;font:600 12px system-ui;cursor:pointer}button:hover{border-color:var(--teal);background:#f4faf8}button.primary{background:var(--teal);border-color:var(--teal);color:white}.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}
+canvas{width:100%;height:150px;display:block}.legend{display:flex;gap:12px;font-size:10px;color:var(--muted);margin-top:4px}.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--teal);margin-right:4px}
+.log{max-height:130px;overflow:auto;font-size:11px}.logrow{padding:6px 0;border-bottom:1px solid #edf0ee;display:flex;gap:8px}.logrow time{color:var(--muted);white-space:nowrap}
+footer{max-width:1600px;margin:0 auto 20px;padding:0 16px;color:var(--muted);font-size:11px}
+@media(max-width:1100px){main{grid-template-columns:220px minmax(360px,1fr)}.rightcol{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.viewer{position:static}}
+@media(max-width:720px){header{padding:13px 15px;align-items:flex-start;flex-direction:column}main{grid-template-columns:1fr;padding:0 10px}.viewer{grid-row:1}.scene{min-height:250px}.leftcol,.rightcol{display:grid;grid-template-columns:1fr}.rightcol{grid-column:auto}}
+</style>
+</head>
+<body>
+<header><div><h1>Cas 01 · Cop de calor</h1><p>Parc municipal · Episodi de calor extrema · Joc point and click</p></div><span class="pill">PROTOTIP INTERACTIU</span></header>
+<main>
+ <aside class="leftcol">
+  <section class="panel"><div class="panelhead"><h2>Objectius del cas</h2><span class="small" id="count">0 / 3</span></div><div class="content">
+   <div class="task" id="t-call"><span class="check"></span><div><strong>Trucar al 112</strong><small>Activar ajuda mèdica urgent.</small></div></div>
+   <div class="task" id="t-shade"><span class="check"></span><div><strong>Portar-lo a l'ombra</strong><small>Allunyar-lo de la calor.</small></div></div>
+   <div class="task" id="t-cool"><span class="check"></span><div><strong>Refredar-lo activament</strong><small>Mullar la pell i aplicar draps freds.</small></div></div>
+  </div></section>
+  <section class="panel"><div class="panelhead"><h2>Inventari</h2><span class="small">Arrossega a l'escena</span></div><div class="content"><div class="inventory" id="inventory"><div class="small">Recull el drap de l'escena per afegir-lo.</div></div><p class="small">També pots seleccionar un objecte i clicar sobre el seu destí.</p></div></section>
+  <section class="panel"><div class="panelhead"><h2>Situació</h2></div><div class="content"><p style="margin:0 0 9px;font-size:12px">En Jordi, de 68 anys, ha caigut després de caminar sota el sol. Té la pell molt calenta, està confús i respon amb dificultat.</p><div class="status"><div class="stat"><b>39 °C</b><span>Temperatura ambient</span></div><div class="stat"><b id="risk">ALT</b><span>Nivell de risc</span></div></div><div class="small" style="margin-top:10px">Objectius completats</div><div class="progress"><i id="bar"></i></div></div></section>
+ </aside>
+
+ <section class="panel viewer">
+  <div class="scenehead"><h2>Visor de l'escenari · Parc</h2><span class="small">Clica o arrossega objectes</span></div>
+  <div class="scene" id="scene">
+   <svg viewBox="0 0 800 450" role="img" aria-label="Parc durant una onada de calor">
+    <rect width="800" height="450" fill="#f5d99d"/><circle cx="690" cy="70" r="38" fill="#f4a340"/>
+    <g stroke="#e99a35" stroke-width="5" stroke-linecap="round"><path d="M690 15v-12M690 137v-12M635 70h-13M758 70h-13M651 31l-9-9M738 118l-9-9M729 31l9-9M642 118l9-9"/></g>
+    <path d="M0 300 Q180 265 350 300 T800 285 V450 H0Z" fill="#a8bd86"/><path d="M0 360 Q220 335 420 365 T800 350 V450 H0Z" fill="#88a875"/>
+    <g><rect x="95" y="170" width="22" height="150" rx="6" fill="#916b4a"/><circle cx="105" cy="150" r="65" fill="#5e9270"/><circle cx="65" cy="170" r="38" fill="#70a17b"/><circle cx="145" cy="174" r="42" fill="#70a17b"/></g>
+    <g class="hotspot" data-action="shade" tabindex="0" role="button" aria-label="Ombra i banc">
+     <path class="shape" d="M38 238 Q105 195 174 238 L164 251 Q105 220 48 251Z" fill="#e6eee0" stroke="#456b55" stroke-width="2"/>
+     <rect x="64" y="282" width="95" height="12" rx="3" fill="#9a6744" class="shape"/><path d="M76 294v25M147 294v25" stroke="#765038" stroke-width="7"/>
+     <text x="43" y="337" class="scene-label">OMBRA / BANC</text>
+    </g>
+    <g class="hotspot" data-action="person" tabindex="0" role="button" aria-label="Persona afectada">
+     <circle class="shape" cx="390" cy="290" r="23" fill="#c98661" stroke="#915b45" stroke-width="2"/>
+     <path d="M370 318 Q390 305 411 320 L430 367 Q399 385 360 365Z" fill="#d56d55" stroke="#8f493c" stroke-width="2" class="shape"/>
+     <path d="M370 355L333 380M414 353L447 375M377 366L360 405M414 367L430 405" stroke="#344b5b" stroke-width="13" stroke-linecap="round"/>
+     <path d="M380 286q5 5 10 0M398 286q5 5 10 0" stroke="#49342d" stroke-width="2" fill="none"/>
+     <text x="344" y="425" class="scene-label">EN JORDI</text>
+    </g>
+    <g class="hotspot" data-action="water" tabindex="0" role="button" aria-label="Ampolla d'aigua">
+     <rect class="shape" x="555" y="300" width="37" height="75" rx="9" fill="#70b8d1" stroke="#286b87" stroke-width="2"/><rect x="565" y="289" width="17" height="13" rx="3" fill="#286b87"/><path d="M561 326h25" stroke="#e7f8ff" stroke-width="5"/><text x="535" y="399" class="scene-label">AIGUA</text>
+    </g>
+    <g class="hotspot" data-action="phone" tabindex="0" role="button" aria-label="Telèfon 112">
+     <rect class="shape" x="660" y="300" width="38" height="66" rx="7" fill="#384957" stroke="#24313b" stroke-width="2"/><rect x="665" y="308" width="28" height="44" rx="3" fill="#d9edf0"/><text x="679" y="337" text-anchor="middle" font-size="13" font-weight="800" fill="#176b67">112</text><text x="650" y="399" class="scene-label">TELÈFON</text>
+    </g>
+    <g class="hotspot" data-action="cloth" tabindex="0" role="button" aria-label="Drap fred">
+     <path class="shape" d="M235 325l74-7 13 48-75 8Z" fill="#dceef0" stroke="#5b9da7" stroke-width="2"/><path d="M247 337l58-6M251 350l61-5" stroke="#8abac0" stroke-width="2"/><text x="234" y="399" class="scene-label">DRAP FRED</text>
+    </g>
+    <text x="24" y="35" font-size="13" font-weight="700" fill="#8b4c25">ALERTA PER CALOR · 39 °C</text>
+    <rect class="dropzone" x="330" y="255" width="125" height="155" rx="18" id="personDrop"/>
+   </svg>
+  </div>
+  <div class="scenehint" id="scenehint">Consell: arrossega el telèfon a la persona per activar el 112, el drap a la persona per refredar-la, o fes clic als objectes.</div>
+ </section>
+
+ <aside class="rightcol">
+  <section class="panel"><div class="panelhead"><h2>Feedback i pistes</h2><span class="small">Ajuda adaptativa</span></div><div class="content"><div id="message" aria-live="polite">Observa els símptomes: la confusió i la temperatura elevada poden indicar un cop de calor. És una emergència mèdica.</div><div class="actions"><button id="hintBtn">Demanar una pista</button><button id="resetBtn">Reiniciar</button></div></div></section>
+  <section class="panel"><div class="panelhead"><h2>Gràfica d'accions</h2><span class="small">Activitat del jugador</span></div><div class="content"><canvas id="chart" width="520" height="190" aria-label="Gràfica de les accions realitzades"></canvas><div class="legend"><span><i class="dot"></i>Accions correctes</span><span>— intents totals</span></div><p class="small" style="margin:8px 0 0">La gràfica s'actualitza cada vegada que interactues amb un element.</p></div></section>
+  <section class="panel"><div class="panelhead"><h2>Registre d'activitat</h2><span class="small" id="logcount">0 accions</span></div><div class="content"><div class="log" id="log"><span class="small">Encara no hi ha accions registrades.</span></div></div></section>
+ </aside>
+</main>
+<footer>Prototip educatiu. Les formes SVG es poden substituir per imatges pròpies mantenint els atributs data-action. El joc és una simulació i no substitueix les instruccions dels serveis d'emergència.</footer>
+<script>
+const state={called:false,shade:false,cooled:false,cloth:false,selected:null,hints:0,events:[],correct:0,attempts:0};
+const $=id=>document.getElementById(id);
+function say(text,type=''){const m=$('message');m.textContent=text;m.className=type}
+function record(label,ok,detail){state.attempts++;if(ok)state.correct++;state.events.push({label,ok,detail,time:new Date().toLocaleTimeString('ca-ES',{hour:'2-digit',minute:'2-digit',second:'2-digit'})});renderLog();drawChart()}
+function renderLog(){$('logcount').textContent=state.events.length+' accions';$('log').innerHTML=state.events.length?state.events.slice().reverse().map(e=>`<div class="logrow"><time>${e.time}</time><span>${e.ok?'✓':'•'} ${e.label} <span class="small">${e.detail}</span></span></div>`).join(''):'<span class="small">Encara no hi ha accions registrades.</span>'}
+function drawChart(){
+ const c=$('chart'),ctx=c.getContext('2d'),w=c.width,h=c.height,p={l:35,r:12,t:12,b:28};ctx.clearRect(0,0,w,h);
+ ctx.font='11px system-ui';ctx.fillStyle='#718078';ctx.strokeStyle='#e5ebe7';ctx.lineWidth=1;
+ for(let i=0;i<=4;i++){let y=p.t+(h-p.t-p.b)*i/4;ctx.beginPath();ctx.moveTo(p.l,y);ctx.lineTo(w-p.r,y);ctx.stroke();ctx.fillText(String(4-i),8,y+4)}
+ const n=Math.max(1,state.events.length),cw=(w-p.l-p.r)/Math.max(5,n);
+ state.events.forEach((e,i)=>{let x=p.l+i*cw+cw*.2,bw=Math.max(4,cw*.6),base=h-p.b;ctx.fillStyle=e.ok?'#176b67':'#d97732';ctx.fillRect(x,base-((e.ok?1:.35)*(h-p.t-p.b)),bw,(e.ok?1:.35)*(h-p.t-p.b));});
+ ctx.fillStyle='#718078';ctx.fillText('Accions registrades: '+state.events.length,p.l,h-7);
+}
+function update(){
+ const done=[state.called,state.shade,state.cooled].filter(Boolean).length;
+ $('count').textContent=done+' / 3';$('bar').style.width=(done/3*100)+'%';
+ [['call',state.called],['shade',state.shade],['cool',state.cooled]].forEach(([id,ok])=>{const el=$('t-'+id);el.classList.toggle('done',ok);el.querySelector('.check').textContent=ok?'✓':''});
+ $('risk').textContent=done===3?'CONTROLAT':done===0?'ALT':'EN GESTIÓ';
+ $('inventory').innerHTML=state.cloth?`<div class="item ${state.selected==='cloth'?'selected':''}" draggable="true" data-item="cloth"><span class="emoji">🧊</span><span><b>Drap fred</b><small>Arrossega'l sobre en Jordi</small></span></div>`:'<div class="small">Recull el drap de l’escena per afegir-lo.</div>';
+ document.querySelectorAll('[data-action]').forEach(el=>el.classList.toggle('done',el.dataset.action==='shade'&&state.shade||el.dataset.action==='phone'&&state.called||el.dataset.action==='person'&&state.cooled));
+ if(done===3)say('Molt bé! Has activat l’emergència, l’has allunyat de la calor i has iniciat el refredament. Mantén la vigilància i segueix les indicacions dels serveis d’emergència.','good');
+}
+function doAction(action,source='click'){
+ if(action==='person'){
+  if(state.selected==='cloth'&&state.cloth){state.cooled=true;state.selected=null;say('Correcte: aplica el drap mullat amb aigua fresca per ajudar a refredar-lo. Segueix les instruccions del 112.','good');record('Aplicar drap fred',true,'refredament extern')}
+  else{say('La persona està confusa i pot tenir un cop de calor. No li donis aigua per boca. Truca al 112 i inicia el refredament.','warn');record('Interacció amb la persona',false,'cal activar emergències i refredar')}
+ }
+ if(action==='phone'){state.called=true;say('Has activat el 112. Explica que sospites un cop de calor, indica la ubicació i segueix les instruccions de l’operador.','good');record('Trucar al 112',true,'emergència activada')}
+ if(action==='shade'){state.shade=true;say('Bona decisió: porta’l a un lloc fresc i a l’ombra si pots fer-ho sense risc. Afluixa la roba excessiva.','good');record('Portar a l’ombra',true,'reduir exposició a la calor')}
+ if(action==='cloth'){state.cloth=true;state.selected='cloth';say('Has recollit el drap. Arrossega’l des de l’inventari fins a en Jordi, o selecciona’l i fes clic sobre la persona.','good');record('Recollir drap fred',true,'objecte afegit a l’inventari')}
+ if(action==='water'){say('Atenció: com que està confús i respon amb dificultat, no li donis aigua per boca: podria ennuegar-se. Prioritza el 112 i el refredament extern.','warn');record('Intentar donar aigua',false,'no administrar líquids per boca si està confús')}
+ update();
+}
+document.querySelectorAll('[data-action]').forEach(el=>{
+ el.addEventListener('click',()=>doAction(el.dataset.action));
+ el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();doAction(el.dataset.action)}});
+ // Permet arrossegar objectes de l'escena a un altre punt: deixa'ls anar sobre la persona per executar l'acció.
+ el.setAttribute('draggable',el.dataset.action==='cloth'||el.dataset.action==='phone'||el.dataset.action==='water');
+ el.addEventListener('dragstart',e=>{e.dataTransfer.setData('text/plain',el.dataset.action);e.dataTransfer.effectAllowed='copy'});
+});
+const scene=$('scene');
+scene.addEventListener('dragover',e=>{e.preventDefault();scene.classList.add('dragover');e.dataTransfer.dropEffect='copy'});
+scene.addEventListener('dragleave',()=>scene.classList.remove('dragover'));
+scene.addEventListener('drop',e=>{e.preventDefault();scene.classList.remove('dragover');const item=e.dataTransfer.getData('text/plain');if(!item)return;
+ const rect=scene.getBoundingClientRect(),x=(e.clientX-rect.left)/rect.width;
+ if(item==='cloth'){if(!state.cloth)doAction('cloth');else{state.selected='cloth';doAction('person')}}
+ else if(item==='phone')doAction('phone');else if(item==='water')doAction('water');
+});
+$('inventory').addEventListener('dragstart',e=>{const item=e.target.closest('[data-item]');if(item){e.dataTransfer.setData('text/plain',item.dataset.item);e.dataTransfer.effectAllowed='copy'}});
+$('inventory').addEventListener('click',e=>{const item=e.target.closest('[data-item]');if(item){state.selected=state.selected==='cloth'?null:'cloth';say(state.selected?'Drap seleccionat. Ara clica sobre en Jordi o arrossega’l fins a la persona.':'Drap deseleccionat.');update()}});
+$('hintBtn').addEventListener('click',()=>{state.hints++;const hints=['Pista 1: una persona confusa amb temperatura molt elevada pot patir un cop de calor. És una emergència: truca al 112.','Pista 2: mentre arriba l’ajuda, porta-la a un lloc fresc i inicia el refredament amb aigua fresca, draps humits i ventilació.','Pista 3: recull el drap, arrossega’l des de l’inventari fins a en Jordi. No li donis beguda si està confús.'];say(hints[Math.min(state.hints-1,2)]);record('Demanar una pista',true,'pista progressiva')});
+$('resetBtn').addEventListener('click',()=>{Object.assign(state,{called:false,shade:false,cooled:false,cloth:false,selected:null,hints:0,events:[],correct:0,attempts:0});say('Cas reiniciat. Observa els símptomes i decideix com actuar.');renderLog();drawChart();update()});
+drawChart();update();
+</script>
+</body></html>
