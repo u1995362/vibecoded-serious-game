@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620"><defs>
+<linearGradient id="bgH" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3e2c9"/><stop offset="1" stop-color="#ead2b6"/></linearGradient>
+</defs>
+<rect width="1000" height="620" fill="url(#bgH)"/>
+<rect y="405" width="1000" height="215" fill="#be9f82"/>
+<path d="M0 404h1000" stroke="#a5866d" stroke-width="9"/>
+<rect x="98" y="54" width="315" height="247" rx="6" fill="#9ec9d3" stroke="#fdf3e4" stroke-width="22"/>
+<path d="M256 54v247" stroke="#fdf3e4" stroke-width="15"/>
+<rect x="109" y="68" width="293" height="225" fill="#b9dce5" opacity=".3"/>
+<g><rect x="478" y="251" width="325" height="137" rx="24" fill="#748f88"/><rect x="500" y="213" width="281" height="80" rx="34" fill="#95aaa0"/><path d="M505 388v90m271-90v90" stroke="#687d6e" stroke-width="16" stroke-linecap="round"/></g>
+<g opacity=".92"><rect x="809" y="132" width="90" height="227" rx="8" fill="#b28c6f"/><rect x="859" y="65" width="53" height="85" rx="4" fill="#dab18a"/><path d="M860 65l26-28 26 28" fill="#ab7957"/></g>
+<g opacity=".78"><rect x="428" y="118" width="56" height="160" rx="6" fill="#ccab82"/><rect x="425" y="108" width="94" height="13" rx="5" fill="#9b755f"/></g>
+<g opacity=".5"><rect x="56" y="441" width="206" height="88" rx="16" fill="#d3b393"/><rect x="73" y="459" width="170" height="17" rx="8" fill="#c89f79"/></g>
+<path d="M0 500h1000" stroke="#927565" stroke-width="9" opacity=".42"/><!-- traditional wall lamp and pot plant -->
+<path d="M918 222h53" stroke="#96765e" stroke-width="9" stroke-linecap="round"/>
+<path d="M943 215l-15 43h44l-15-43Z" fill="#efdbac"/>
+<ellipse cx="944" cy="261" rx="20" ry="6" fill="#f6e7bb" opacity=".55"/>
+<rect x="52" y="414" width="49" height="54" rx="7" fill="#b77d64"/>
+<g stroke="#718e68" stroke-width="9" stroke-linecap="round"><path d="M77 414v-92M77 366l-32-32M77 366l35-39"/></g>
+<g fill="#6c9776"><ellipse cx="47" cy="332" rx="28" ry="15" transform="rotate(25 47 332)"/><ellipse cx="109" cy="324" rx="28" ry="15" transform="rotate(-25 109 324)"/><ellipse cx="76" cy="302" rx="18" ry="31"/></g>
+</svg>

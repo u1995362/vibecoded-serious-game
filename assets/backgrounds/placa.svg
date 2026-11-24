@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620">
+<defs>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#8dcde9"/><stop offset=".68" stop-color="#e2f3f1"/><stop offset="1" stop-color="#f8e7b4"/></linearGradient>
+ <linearGradient id="pavement" x2="0" y2="1"><stop stop-color="#dfc99b"/><stop offset="1" stop-color="#bbab83"/></linearGradient>
+ <linearGradient id="trunk" x2="1" y2="0"><stop stop-color="#71533c"/><stop offset=".6" stop-color="#956b47"/><stop offset="1" stop-color="#5d4836"/></linearGradient>
+ <radialGradient id="sunGlow"><stop stop-color="#fff1ad" stop-opacity=".72"/><stop offset="1" stop-color="#fff1ad" stop-opacity="0"/></radialGradient>
+</defs>
+<!-- sky and distinct sun area on the RIGHT -->
+<rect width="1000" height="620" fill="url(#sky)"/>
+<circle cx="847" cy="105" r="125" fill="url(#sunGlow)"/>
+<g stroke="#fdbf53" stroke-width="6" stroke-linecap="round" opacity=".76">
+ <path d="M844 5v26M844 179v28M745 105h-26M942 105h30M774 36l-17-17M915 174l18 18M913 36l18-18M773 173l-18 18"/>
+</g>
+<circle cx="844" cy="105" r="58" fill="#ffb44a"/>
+<circle cx="833" cy="94" r="36" fill="#ffd277" opacity=".4"/>
+<!-- distant buildings, kept low so the sun remains fully visible -->
+<rect x="0" y="248" width="110" height="136" rx="3" fill="#d6aa83"/>
+<path d="M0 248h117l-59-42Z" fill="#aa7958"/>
+<rect x="34" y="283" width="26" height="39" fill="#ffeed0" stroke="#b78b6c" stroke-width="5"/>
+<rect x="63" y="283" width="25" height="39" fill="#ffeed0" stroke="#b78b6c" stroke-width="5"/>
+<rect x="325" y="278" width="148" height="102" rx="3" fill="#dfb48c"/>
+<path d="M312 278l86-58 92 58" fill="#c28a64"/>
+<rect x="342" y="314" width="39" height="39" fill="#f5ddbc"/>
+<rect x="398" y="314" width="39" height="39" fill="#f5ddbc"/>
+<rect x="700" y="249" width="300" height="141" fill="#d6ad87"/>
+<path d="M686 249l162-61 152 61" fill="#b57f5d"/>
+<rect x="732" y="293" width="45" height="48" fill="#f5e1bf"/>
+<rect x="806" y="293" width="45" height="48" fill="#f5e1bf"/>
+<rect x="878" y="293" width="45" height="48" fill="#f5e1bf"/>
+<path d="M700 352h300" stroke="#fff0d7" stroke-width="9" opacity=".7"/>
+<!-- terrain and light -->
+<rect y="382" width="1000" height="238" fill="url(#pavement)"/>
+<path d="M0 405c160-32 278-8 394-4 141 7 245-10 355-14 100-3 161 0 251 0v233H0Z" fill="#c9b68c"/>
+<path d="M500 399c170-22 330-28 500-18v239H515c91-76 65-151-15-221Z" fill="#efd09c" opacity=".52"/>
+<g stroke="#f4e3bd" stroke-width="5" opacity=".58" fill="none">
+ <path d="M0 473q245-37 485 0t515 0"/><path d="M0 550q280-30 540 0t460 0"/>
+ <path d="M300 393l-92 227M516 388l9 232M740 383l94 237"/>
+</g>
+<!-- strong intentional shadow occupying the LEFT of the plaza -->
+<path d="M0 370Q110 353 208 372Q337 399 418 461Q369 515 204 528Q72 528 0 504Z" fill="#416d60" opacity=".27"/>
+<ellipse cx="145" cy="461" rx="186" ry="57" fill="#2c6954" opacity=".25"/>
+<g opacity=".18" fill="#246349">
+ <ellipse cx="24" cy="502" rx="31" ry="14"/><ellipse cx="74" cy="490" rx="39" ry="17"/>
+ <ellipse cx="128" cy="513" rx="35" ry="11"/><ellipse cx="229" cy="503" rx="49" ry="14"/>
+ <ellipse cx="312" cy="464" rx="36" ry="17"/>
+</g>
+<!-- large shaded TREE on far LEFT -->
+<path d="M129 382Q136 290 128 240Q109 206 75 198L87 181Q130 200 143 216Q157 173 174 132L194 140Q170 192 162 239Q164 319 174 387Z" fill="url(#trunk)"/>
+<path d="M149 379Q154 290 145 236" fill="none" stroke="#b68a60" stroke-width="7" opacity=".47"/>
+<g fill="#568a60"><circle cx="111" cy="162" r="96"/><circle cx="46" cy="191" r="70"/><circle cx="194" cy="182" r="74"/><circle cx="164" cy="110" r="82"/></g>
+<g fill="#6c9f6b" opacity=".88"><circle cx="68" cy="128" r="50"/><circle cx="151" cy="103" r="60"/><circle cx="203" cy="160" r="50"/><circle cx="31" cy="180" r="39"/></g>
+<g fill="#92b67c" opacity=".55"><ellipse cx="84" cy="104" rx="33" ry="20"/><ellipse cx="168" cy="79" rx="38" ry="21"/><ellipse cx="232" cy="157" rx="27" ry="14"/></g>
+<!-- bench directly under tree, leaving center for characters -->
+<g><path d="M193 441l-5 35M314 439l7 37" stroke="#78563d" stroke-width="12" stroke-linecap="round"/>
+<rect x="177" y="415" width="160" height="17" rx="5" fill="#a86a49"/>
+<rect x="187" y="394" width="142" height="15" rx="5" fill="#b67a53"/>
+<path d="M201 408v21M312 408v21" stroke="#7e523b" stroke-width="8"/>
+<path d="M192 399h132M182 420h151" stroke="#daa780" stroke-width="2" opacity=".7"/>
+</g>
+<!-- tiny decorative grasses -->
+<g stroke="#718d5f" stroke-width="3" stroke-linecap="round" opacity=".6">
+ <path d="M35 382l-7-12m7 12 6-10M369 395l-3-9m3 9 8-12M932 406l-4-12m4 12 7-11"/>
+</g>
+</svg>

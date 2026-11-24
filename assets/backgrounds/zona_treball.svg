@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620">
+<defs>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#9bd5eb"/><stop offset="1" stop-color="#f9e5ba"/></linearGradient>
+ <linearGradient id="ground" x2="0" y2="1"><stop stop-color="#ddc89b"/><stop offset="1" stop-color="#c2ab85"/></linearGradient>
+ <linearGradient id="wall" x2="0" y2="1"><stop stop-color="#f6e8cc"/><stop offset="1" stop-color="#dcbd99"/></linearGradient>
+</defs>
+<!-- Fons vectorial original: obra exterior durant una onada de calor -->
+<rect width="1000" height="620" fill="url(#sky)"/>
+<circle cx="855" cy="105" r="57" fill="#ffc56c"/>
+<g stroke="#ffdd91" stroke-linecap="round" stroke-width="6" opacity=".78"><path d="M855 18v27m0 121v27m-87-88h27m121 0h27m-148-60 19 19m82 82 19 19m0-120-19 19m-82 82-19 19"/></g>
+<!-- Edificis al fons -->
+<g fill="#d5bc9c"><rect x="0" y="238" width="125" height="196"/><rect x="122" y="207" width="145" height="227"/><rect x="783" y="234" width="217" height="200"/></g>
+<g fill="#efd6b8"><rect x="18" y="276" width="38" height="55"/><rect x="74" y="276" width="34" height="55"/><rect x="160" y="240" width="43" height="58"/><rect x="211" y="240" width="36" height="58"/><rect x="812" y="267" width="54" height="61"/><rect x="889" y="267" width="66" height="61"/></g>
+<rect y="419" width="1000" height="201" fill="url(#ground)"/>
+<path d="M0 460Q230 443 420 470T1000 452v168H0Z" fill="#ceb58c"/>
+<path d="M0 514Q360 498 630 520T1000 506" stroke="#f4e1bd" stroke-width="11" fill="none" opacity=".65"/>
+<!-- Bastida a l'esquerra -->
+<g stroke="#778b90" stroke-width="12" stroke-linecap="round" fill="none"><path d="M93 197V458M330 197V458M88 225H335M88 312H335M88 400H335M93 225l237 175M330 225L93 400"/></g>
+<g fill="#d6a676"><rect x="77" y="219" width="270" height="17" rx="3"/><rect x="77" y="302" width="270" height="17" rx="3"/><rect x="77" y="394" width="270" height="17" rx="3"/></g>
+<g fill="#e0c69f"><rect x="112" y="238" width="100" height="65" rx="4"/><rect x="227" y="330" width="85" height="62" rx="4"/></g>
+<!-- Tendal d'ombra per fer pauses, a la dreta del punt de treball -->
+<path d="M477 310L719 310l-31-76H508Z" fill="#e4b871" stroke="#aa8158" stroke-width="5"/>
+<path d="M508 238H688" stroke="#f8e2b8" stroke-width="8"/>
+<path d="M493 311v145m213-145v145" stroke="#967756" stroke-width="11" stroke-linecap="round"/>
+<ellipse cx="598" cy="461" rx="153" ry="50" fill="#768372" opacity=".25"/>
+<!-- Banc sota el tendal -->
+<rect x="531" y="393" width="141" height="17" rx="7" fill="#a86f4e"/>
+<path d="M548 410v35m108-35v35" stroke="#75533f" stroke-width="11" stroke-linecap="round"/>
+<!-- Caixes, cons i ambient de feina -->
+<rect x="345" y="427" width="85" height="72" rx="4" fill="#c99c68" stroke="#ae8458" stroke-width="5"/>
+<path d="M357 436l60 53m0-53-60 53" stroke="#e9c89f" stroke-width="7"/>
+<g><path d="M776 480l29-93 29 93z" fill="#e28b47"/><rect x="760" y="475" width="91" height="13" rx="3" fill="#8c7766"/><path d="M790 429h31m-39 29h46" stroke="#f6d6b5" stroke-width="9"/></g>
+<g><path d="M871 480l24-77 24 77z" fill="#e28b47"/><rect x="861" y="476" width="69" height="12" rx="3" fill="#8c7766"/></g>
+<!-- Pissarra de planificació, pensada per a la interacció -->
+<rect x="385" y="211" width="102" height="84" rx="8" fill="#f0f5ee" stroke="#688d90" stroke-width="8"/>
+<path d="M404 236h66M404 251h56M404 267h48" stroke="#80aaaa" stroke-width="6" stroke-linecap="round"/>
+<g fill="#fff5de" opacity=".45"><circle cx="391" cy="93" r="4"/><circle cx="675" cy="163" r="3"/><circle cx="760" cy="211" r="3"/></g>
+</svg>

@@ -1,0 +1,654 @@
+
+:root{--bg:#111e28;--panel:#172935;--panel2:#203644;--edge:#3c5660;--text:#eff9f6;--muted:#b0c5c5;--aqua:#6be3c5;--amber:#ffd183;--danger:#ff8887}*{box-sizing:border-box}body{margin:0;color:var(--text);background:radial-gradient(ellipse at 50% -40%,#39515d,#101b26 65%);font:14px/1.4 system-ui,Segoe UI,sans-serif}button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid var(--aqua);outline-offset:2px}button:disabled{opacity:.4}header{max-width:1500px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:13px 18px;gap:14px;flex-wrap:wrap}.logo{display:flex;align-items:center;gap:11px}.seal{display:grid;place-items:center;font-size:25px;width:48px;height:48px;border-radius:13px;background:#f3ae4d;color:#302114;box-shadow:inset 0 -5px #ba772a}h1{font-size:22px;margin:0;letter-spacing:-.5px}header p{margin:1px 0;color:var(--muted);font-size:12px}.hud{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.hud>span{background:#203644;border:1px solid #426070;border-radius:10px;padding:7px 12px;font-size:12px}.hud b{font-size:17px;color:#fff}.hud .urgent b{color:var(--amber)}.uiBtn{background:#294451;border:1px solid #5a7982;color:white;border-radius:9px;padding:9px 11px}.uiBtn:hover{background:#3a5b65}.layout{max-width:1500px;margin:0 auto;padding:0 15px 20px;display:grid;grid-template-columns:minmax(540px,1fr) 302px;gap:13px}.stage-shell{border:1px solid #46606d;border-radius:16px;overflow:hidden;background:#172a37;box-shadow:0 14px 44px #0005}.stageTop{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:10px 14px;background:#1b303d}.stageTop strong{font-size:17px}.stageTop small{color:var(--muted)}.env{display:flex;gap:7px;flex-wrap:wrap}.env span{font-size:12px;background:#0c2229;padding:5px 9px;border-radius:7px;color:#c8e2db}.env b{color:#fff}.world{height:clamp(370px,50vw,610px);position:relative;overflow:hidden;isolation:isolate;touch-action:none;user-select:none}.sky,.scenery{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.sky{z-index:-1}.scenery{z-index:0}.sceneTitle{position:absolute;top:13px;left:15px;z-index:2;background:#15323acb;border:1px solid #ffffff40;border-radius:11px;padding:8px 13px;max-width:54%;backdrop-filter:blur(7px)}.sceneTitle b{font-size:14px}.sceneTitle small{display:block;color:#daeced;font-size:11px}.world-node{position:absolute;transform:translate(-50%,-50%);z-index:3;border:0;background:transparent;color:#fff;display:flex;align-items:center;flex-direction:column;gap:2px;max-width:140px;min-width:68px;text-shadow:0 2px 6px #1a222b}.objectIcon{display:grid;place-items:center;width:58px;height:58px;border-radius:16px;background:linear-gradient(135deg,#ffffffd9,#d1ece8cf);border:2px solid #ffffffad;color:#173b43;font-size:34px;box-shadow:0 10px 17px #15292765, inset 0 -5px #426b6a22;transition:transform .14s,box-shadow .14s}.world-node:hover .objectIcon,.world-node:focus-visible .objectIcon{transform:translateY(-5px) scale(1.1);box-shadow:0 10px 25px #0007,0 0 0 3px #8be4ba}.objectName{font-size:11px;padding:3px 6px;background:#142b36e8;border:1px solid #ffffff40;border-radius:6px;font-weight:750}.world-node.person{z-index:5;min-width:112px;max-width:160px;cursor:pointer}.personAvatar{font-size:66px;line-height:1.1;filter:drop-shadow(0 9px 4px #152e385e);transition:transform .2s}.person:hover .personAvatar{transform:scale(1.1)}.person-name{padding:3px 8px;border-radius:7px;background:#132b39ef;border:1px solid #8ab8b8;font-weight:800;font-size:13px}.person.selected .person-name{background:#137565;color:#fff;border-color:#a6ffe8}.person.done .person-name{background:#166148}.speech{background:#fffefa;color:#18333c;padding:6px 9px;border-radius:9px;font-size:11px;font-weight:700;text-shadow:none;white-space:normal;max-width:156px;box-shadow:0 4px 12px #0003}.overhead{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);width:165px;border:1px solid #a5ddcc;background:#102a34ec;border-radius:10px;padding:7px;display:grid;gap:4px;pointer-events:none;color:#f5fffc;text-shadow:none;box-shadow:0 4px 10px #0005}.overhead .unseen{font-size:10px;color:#b8d6d1}.mini{display:flex;align-items:center;gap:5px;font-size:10px;white-space:nowrap}.mini i{width:51px;height:6px;background:#375460;border-radius:9px;overflow:hidden;display:block}.mini em{height:100%;display:block;background:#5be1bd}.mini em.hot{background:#ffad68}.person .bubble{position:absolute;bottom:-24px;white-space:nowrap;color:#fff;background:#004f49;padding:2px 8px;border-radius:7px;font-size:10px;text-shadow:none}.arrow{position:absolute;top:52%;z-index:8;transform:translateY(-50%);background:#102e3dbd;color:#fff;border:2px solid #b9e9e0;border-radius:12px;padding:13px 9px;font-size:32px;line-height:1;box-shadow:0 6px 19px #0005}.arrow:hover{background:#167b75}.arrow.left{left:9px}.arrow.right{right:9px}.room-bottom{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);padding:6px 12px;background:#102a35d6;border-radius:11px;font-size:11px;z-index:3;color:#e0f1eb;pointer-events:none;white-space:nowrap}.world.drop-ready:after{content:'DEIXA ANAR L’EINA SOBRE UNA PERSONA';position:absolute;bottom:43px;left:50%;transform:translateX(-50%);padding:7px 12px;border:1px solid #97e3c6;background:#165149db;border-radius:9px;font-weight:700;z-index:10;white-space:nowrap;pointer-events:none}.world .person.drop-over .personAvatar{filter:drop-shadow(0 0 16px #a2ffdb)}.tray{padding:12px 14px 14px;border-top:1px solid #506974;background:#1a303d}.trayHeader{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.trayHeader b{font-size:14px}.trayHeader small{font-size:11px;color:var(--muted)}.inventory{display:flex;gap:8px;overflow-x:auto;padding:2px 1px 9px;scrollbar-color:#527785 transparent}.inv{flex:0 0 104px;position:relative;background:linear-gradient(#31505c,#243d4a);border:2px solid #53717d;border-radius:11px;color:white;min-height:104px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:3px;padding:7px 4px;touch-action:none}.inv.active{background:#18655f;border-color:#a4ffdf;box-shadow:0 0 0 2px #7de0c34d}.inv .glyph{font-size:31px}.inv b{font-size:10px;text-align:center;line-height:1.2}.inv small{font-size:10px;color:#d2eae6}.inv.empty{opacity:.45}.tip{padding:9px 14px;border-top:1px solid #415961;font-size:12px;color:#d2e8e3;background:#1b353d}.sidebar{display:flex;flex-direction:column;gap:12px}.card{background:#1b303e;border:1px solid #42606c;border-radius:13px;padding:13px;box-shadow:0 4px 16px #0002}.card h2{font-size:14px;margin:0 0 9px}.card p{font-size:12px;color:#cfe1e3;margin:0 0 10px}.message{background:#0d2631;border-left:3px solid #6be3c5;border-radius:7px;padding:11px;font-size:12px;min-height:92px;line-height:1.5}.message.bad{border-color:#ff9c82}.message.good{border-color:#6be3c5}.sideActions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.progress{height:9px;background:#0a202d;border-radius:9px;overflow:hidden}.progress>div{height:100%;background:#55d9a8;transition:width .25s}.quest{display:flex;gap:8px;border-bottom:1px solid #34505c;padding:8px 0;font-size:12px}.quest:last-child{border:0}.quest b{color:#7deac8}.quest small{display:block;color:#b4c9c9}.helpText{font-size:11px;color:#c4d7d6}.debug{grid-column:1/-1}.debugPanel{display:none}.debug.open .debugPanel{display:grid;grid-template-columns:1.3fr 1fr;gap:12px}.debug.open{background:#142735}.chartGrid{display:grid;gap:10px}canvas{width:100%;height:195px;background:#102430;border-radius:9px}.legend{color:#bed3d3;font-size:11px}.debugTasks{max-height:290px;overflow:auto}.debugTasks div{font-size:11px;padding:5px;border-bottom:1px solid #38515b}.log{max-height:160px;overflow:auto;font-size:11px}.log div{padding:5px 0;border-bottom:1px solid #36515a}.status{font-weight:bold;color:#7bedd3}dialog{border:1px solid #8cd5c5;background:#19323e;color:white;border-radius:16px;max-width:460px;width:90%;padding:25px;box-shadow:0 20px 70px #000b}dialog::backdrop{background:#000a}.dragGhost{position:fixed;z-index:9999;pointer-events:none;font-size:48px;filter:drop-shadow(0 6px 8px #0008);transform:translate(-50%,-50%)}.transport-mode{border-color:#ffdc8b!important;background:#725627!important}.transport-banner{padding:10px;background:#7c5a27;border:1px solid #ecb75e;border-radius:9px;margin:8px 0;color:#fff;font-size:12px}footer{max-width:1500px;margin:auto;padding:0 18px 24px;color:#a8bfbb;font-size:11px}@media(max-width:1020px){.layout{grid-template-columns:1fr}.sidebar{display:grid;grid-template-columns:1fr 1fr}.debug{grid-column:1/-1}}@media(max-width:600px){header{padding:10px}.layout{padding:0 7px 12px}.world{height:450px}.sidebar{grid-template-columns:1fr}.stageTop{display:block}.env{margin-top:8px}.sceneTitle{top:7px;left:8px;max-width:75%}.world-node.person{min-width:86px}.personAvatar{font-size:51px}.overhead{width:137px}.room-bottom{font-size:9px}.arrow{font-size:25px;padding:10px 6px}.debug.open .debugPanel{grid-template-columns:1fr}}
+
+/* Interaccions individuals amb objectes fixos */
+.world-node.target-active .objectIcon{outline:3px solid #ffe39a;box-shadow:0 0 23px #ffd27a8c, inset 0 -5px #426b6a22}
+.world-node.person.targetable .person-name{border-color:#ffe39a;box-shadow:0 0 0 2px #ffd27a4b}
+/* Versió 3: interaccions, salut permanent i quadern de coneixement */
+.world-node.fixed .objectIcon{background:linear-gradient(135deg,#e7f6fb,#d1e1e8);border-color:#7ba5bb}.world-node.fixed .objectName{background:#214357}.world-node.running .objectIcon{background:linear-gradient(135deg,#8de6c5,#c9f9e9);box-shadow:0 0 17px #6be3c57d}.world-node.person .overhead{bottom:104%;width:172px}.overhead .mini{justify-content:space-between;font-size:10px}.overhead .mini b{font-size:11px}.mini em.danger{background:#f57577}.world-node.person{gap:1px}.personAvatar{font-size:56px}.world-node.person .speech{max-width:168px}.world-node.person .overhead{z-index:7}.message{min-height:116px}.noteBox{padding-top:10px}.noteTabs{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px}.noteTab{background:#254653;color:#d2e8e5;border:1px solid #50737a;border-radius:6px;padding:6px 8px;font-size:11px}.noteTab.active{background:#157c73;color:#fff}.noteBody{font-size:12px;background:#0d2631;border-radius:9px;padding:12px;line-height:1.55}.noteBody p{margin:7px 0}.noteBody a{color:#8fe3ff}.difficultyTrack{height:6px;border-radius:10px;background:#0e2632;overflow:hidden;margin-top:7px}.difficultyTrack i{display:block;height:100%;background:#e8ba6e;transition:width .3s}.difficultyMeta{display:flex;justify-content:space-between;font-size:11px;color:#c2d8d5;margin-top:6px}#notebook summary{cursor:pointer;font-weight:700}.hint-note{font-size:11px;color:#9bc9bd;margin-top:7px}.metrics .active{background:#1c7c72;border-color:#a2f3d7}#chart{height:230px}.person.done .overhead{border-color:#79e5b3}.world-node.person.drop-over .overhead{box-shadow:0 0 0 3px #8cf9d8}#endDifficulty{color:#ffd187;font-weight:700} .fixed-legend{font-size:11px;color:#b5cecf} .mini i{flex-shrink:0}
+@media(max-width:600px){.world{height:470px}.world-node.person .overhead{width:132px;padding:5px}.personAvatar{font-size:46px}.mini i{width:30px}.world-node.person{max-width:110px}.person .speech{font-size:9px}.world-node.fixed .objectIcon,.world-node .objectIcon{width:49px;height:49px;font-size:26px}.objectName{font-size:9px}.world-node{min-width:57px}}
+
+/* V4 — direcció artística: aventures il·lustrades, espais i UI polits */
+:root{--bg:#0a1820;--panel:#142b37;--panel2:#214351;--edge:#48707b;--text:#f4faf5;--muted:#b7d2cb;--aqua:#69e6c0;--amber:#f9c873}
+body{background:radial-gradient(circle at 78% 0%,#254958 0%,transparent 43%),linear-gradient(160deg,#081820,#0c2631 60%,#0a2028);min-height:100vh}
+header{padding-top:19px;padding-bottom:18px}h1{font-size:26px;letter-spacing:-1px;font-weight:850}.seal{width:54px;height:54px;background:linear-gradient(135deg,#ffe09a,#f5a44e);border:1px solid #ffe2ac;box-shadow:0 5px 20px #0005,inset 0 -6px #ad672822}
+.hud>span{border-color:#4b6971;background:#122f3cb8;box-shadow:inset 0 1px #ffffff10}.hud .urgent{background:#614328;border-color:#e4b77e}.hud .urgent b{font-variant-numeric:tabular-nums;font-size:19px;color:#fff2ce}
+.stage-shell{border:1px solid #63858a;box-shadow:0 16px 50px #020c15a0,0 0 0 4px #ffffff05}.world{background:#98cabd;box-shadow:inset 0 10px 35px #1428314a}.scenery{filter:saturate(1.13)}.stageTop{background:linear-gradient(100deg,#254654,#132e3b);padding:13px 17px}.stageTop strong{font-size:18px}
+.sceneTitle{top:19px;left:23px;background:#0b2b38d9;border-color:#f3e2b870;box-shadow:0 5px 20px #0004;padding:12px 16px}.sceneTitle b{font-size:17px}.sceneTitle small{font-size:12px}
+.world-node .objectIcon{width:62px;height:62px;border-radius:18px;background:linear-gradient(140deg,#fff8e7,#d6f5df);border:2px solid #fff3ca;box-shadow:0 8px 0 #16313d3d,0 13px 25px #06202a65;transition:.14s transform,.14s box-shadow}.world-node:hover .objectIcon{transform:translateY(-6px) rotate(-3deg) scale(1.07)}
+.world-node.fixed .objectIcon{background:linear-gradient(145deg,#dce9f4,#bfd8e2);border-color:#7ba8b5}.world-node.running .objectIcon{background:linear-gradient(145deg,#8be8b9,#d0ffeb);border-color:#d8ffe7}.world-node:has(.objectName) .objectName{font-size:11px;letter-spacing:.02em;box-shadow:0 2px 6px #0004}
+.personAvatar{font-size:69px;filter:drop-shadow(0 9px 2px #172b3259)}.person-name{background:#0e3e4eea;border:1px solid #b9e6dc;padding:4px 10px;border-radius:10px}.person.done .person-name{background:#167c66}.world-node.person .overhead{border:2px solid #a9e9dc;background:#0a3440f1;box-shadow:0 9px 23px #09232c91;border-radius:13px;padding:9px}
+.speech{background:#fffbea;color:#25424a;box-shadow:0 6px 0 #183c3c35,0 12px 18px #102b3540;border-radius:12px}.arrow{background:#183746dc;border:1px solid #f1e4b5;color:#fffbe9;border-radius:15px;min-width:43px;min-height:74px;transition:background .15s}.arrow:hover{background:#176c68}
+.tray{background:linear-gradient(#173645,#142e3c)}.inv{background:linear-gradient(160deg,#355867,#193744);border:1px solid #6a98a0;border-bottom-width:4px;transition:transform .12s}.inv:hover{transform:translateY(-3px)}.inv.active{box-shadow:0 0 0 3px #98ffd273;background:#125e58}
+.card{background:linear-gradient(160deg,#193745,#112b38);border-color:#50757c;box-shadow:0 5px 15px #06151e38}.card h2{font-size:15px}.message{background:linear-gradient(135deg,#153442,#0d2833);border-left-width:4px;font-size:13px;line-height:1.5}.uiBtn{border-color:#72929a;background:#234856}.uiBtn:hover{background:#2c6570}.noteTab.active{border-color:#b4ffde}
+.world-node[data-spot="manual"] .objectIcon,.world-node[data-spot="poster"] .objectIcon,.world-node[data-spot="bulletin"] .objectIcon,.world-node[data-spot="leaflet"] .objectIcon{background:linear-gradient(150deg,#fff1be,#ffe4a0);border-color:#ffdd81}
+@keyframes floatnote{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@media(max-width:600px){h1{font-size:21px}.world{height:510px}.world-node.person .overhead{width:145px}.personAvatar{font-size:53px}.arrow{min-height:55px;min-width:30px}.sceneTitle{top:8px;left:8px;padding:8px 10px}.sceneTitle b{font-size:13px}.sceneTitle small{font-size:10px}}
+
+/* V8 · Zones individuals i separació espacial d’objectes */
+.stage-shell{position:relative}
+.mobileNav{display:none}
+@media(max-width:600px){.world .arrow{display:none}.mobileNav{display:grid;place-items:center;position:absolute;z-index:11;top:365px;width:35px;height:54px;border:1px solid #f1e4b5;border-radius:12px;color:#fff;background:#173d4ded;box-shadow:0 3px 14px #0007;font-size:23px}.mobileNavLeft{left:7px}.mobileNavRight{right:7px}}
+
+.mobilePan{display:none}@media(max-width:600px){.mobilePan{display:inline;color:#a9dccc}}
+.worldScroller{position:relative;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;scrollbar-color:#78adad #193946}
+@media(max-width:600px){.worldScroller .world{width:800px;height:520px;touch-action:pan-x}.world-node.person .overhead{width:145px}}
+
+.world-node[data-spot="sun"].objectIcon{background:linear-gradient(145deg,#ffe6aa,#f7b765);border-color:#fce5ab}
+.world-node[data-spot="sun"].objectName{background:#75502b}
+.world-node.person[data-placement="sun"] .placeBubble{background:#976021!important}
+/* V7 · Posicionament tangible i tutorial inicial */
+.world-node.person{cursor:grab;touch-action:none;transition:left .28s ease,top .28s ease}
+.world-node.person:active{cursor:grabbing}
+.world-node.zone-ready .objectIcon,.world-node.zone-hover .objectIcon{outline:4px solid #ffe8a3;box-shadow:0 0 0 7px #ffd98a44,0 0 26px #ffdb7dcc;transform:scale(1.08)}
+.person.selected .personAvatar{filter:drop-shadow(0 0 12px #75ffc8)}
+.placeBubble{background:#075a47!important;bottom:-29px!important;font-weight:800}
+.introDialog{max-width:640px;width:min(94vw,640px);max-height:90dvh;overflow-y:auto;padding:25px 28px;background:linear-gradient(155deg,#203e47,#102832);border:1px solid #86d5bf}
+.introHeading{display:flex;gap:15px;align-items:center}.introSymbol{font-size:46px;line-height:1}.introHeading small{color:#80ddc3;font-size:11px;letter-spacing:2px;font-weight:900}.introHeading h2{font-size:30px;margin:0}.introLead{margin:13px 0 18px;color:#e0f2ed;font-size:14px}.introSteps{display:grid;gap:9px}.introSteps>div{display:flex;align-items:flex-start;gap:13px;border:1px solid #4e747a;background:#ffffff0c;padding:11px 13px;border-radius:12px}.introSteps>div>span{font-size:26px;flex:none;width:35px;text-align:center}.introSteps p{margin:0;display:grid;gap:3px}.introSteps b{font-size:14px}.introSteps small{font-size:12px;color:#c2dad7;line-height:1.5}.introFoot{display:flex;gap:12px;justify-content:space-between;align-items:center;margin-top:19px;flex-wrap:wrap}.introFoot span{font-size:11px;color:#b9dad1}.startBtn{background:#33a58e;color:#fff;font-weight:800;padding:12px 20px;font-size:15px;border-color:#7fe8cc}.startBtn:hover{background:#238d78}
+@media(max-width:600px){.introDialog{padding:17px}.introHeading h2{font-size:24px}.introSteps>div{padding:9px}.world-node.person{max-width:125px}}
+
+/* V10: noms dels objectes i zones només quan s'hi interactua.
+   Les etiquetes no ocupen espai ni provoquen salts de posició. */
+.world-node:not(.person) .objectName{
+  position:absolute;
+  top:calc(100% + 5px);
+  left:50%;
+  transform:translate(-50%,-4px);
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  white-space:nowrap;
+  z-index:12;
+  transition:opacity .14s ease,transform .14s ease,visibility .14s;
+}
+.world-node:not(.person):is(:hover,:focus-visible,:focus-within,.target-active,.zone-hover) .objectName{
+  opacity:1;
+  visibility:visible;
+  transform:translate(-50%,0);
+}
+@media(hover:none){
+ .world-node:not(.person):focus .objectName{opacity:1;visibility:visible;transform:translate(-50%,0)}
+}
+
+/* V11: les etiquetes emergents passen per davant de persones, estadístiques i altres objectes. */
+#nodes .world-node:not(.person):is(:hover,:focus,:focus-visible,:focus-within,.target-active,.zone-hover){
+  z-index:100 !important;
+}
+#nodes .world-node:not(.person) .objectName{
+  z-index:101;
+  isolation:isolate;
+  box-shadow:0 5px 18px #061923cc;
+}
+
+/* V13 — HUD ingame més lleuger, translúcid i apilat. */
+.layout{display:block;max-width:1500px}
+.stage-shell{position:relative;isolation:isolate}
+.stageTop{display:none}
+.debug{margin-top:14px}
+.sceneTitle{top:18px;left:18px;z-index:12;max-width:min(56%,430px);padding:14px 16px;border-radius:18px;background:rgba(10,43,56,.56);border:1px solid rgba(255,255,255,.28);box-shadow:0 12px 26px rgba(0,0,0,.23);backdrop-filter:blur(10px);display:grid;gap:9px}
+.sceneTitle b{font-size:16px;display:block}
+.sceneTitle small{display:block;color:#e3f1f1;font-size:11px}
+.sceneTitleHead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.sceneIdx{opacity:.8;white-space:nowrap;font-size:11px}
+.sceneStats{display:flex;flex-wrap:wrap;gap:6px}
+.sceneStat{display:inline-flex;align-items:center;gap:5px;padding:4px 8px;border-radius:999px;background:rgba(7,29,37,.34);border:1px solid rgba(255,255,255,.16);font-size:11px;color:#ebf6f4}
+.sceneStat b{font-size:12px;display:inline}
+.ingame-ui{position:absolute;inset:0;z-index:35;pointer-events:none}
+.ig-dock{position:absolute;right:14px;top:16px;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px;max-width:min(560px,60%);padding:7px 8px;border-radius:16px;background:rgba(8,29,37,.22);border:1px solid rgba(255,255,255,.11);backdrop-filter:blur(10px);box-shadow:0 8px 20px rgba(0,0,0,.14);z-index:14;pointer-events:auto}
+.ig-tab{background:rgba(12,44,56,.62);border:1px solid rgba(171,226,214,.52);border-radius:11px;padding:7px 10px;color:#eefaf6;display:flex;gap:6px;align-items:center;box-shadow:0 4px 10px rgba(2,20,32,.25);backdrop-filter:blur(8px);font-weight:750;font-size:11px;min-height:38px}
+.ig-tab span{font-size:18px;line-height:1}
+.ig-tab:hover,.ig-tab:focus-visible{background:rgba(31,100,93,.78)}
+.ig-tab[aria-expanded="true"]{background:rgba(20,111,96,.8);border-color:#a6ffde;box-shadow:0 0 0 2px #70ffc32e}
+.ig-windows{position:absolute;right:14px;top:72px;display:flex;flex-direction:column;align-items:flex-end;gap:8px;max-height:calc(100% - 170px);pointer-events:none;z-index:13}
+.ig-pane{display:none;pointer-events:auto;width:min(355px,calc(100vw - 28px));background:rgba(16,43,56,.68);box-shadow:0 13px 34px #0007;border:1px solid rgba(160,205,198,.62);max-height:min(270px,42vh);overflow-y:auto;overscroll-behavior:contain;backdrop-filter:blur(12px)}
+.ig-pane.is-open{display:block}
+.ig-pane h2{margin-bottom:8px}
+.ig-pane .message{min-height:72px;background:rgba(8,31,40,.56)}
+.ig-pane p,.ig-pane .quest small,.ig-pane .hint-note,.ig-pane .difficultyMeta,.ig-pane .fixed-legend{color:#dbebea}
+.ig-pane[data-panel="notes"] .noteBody{max-height:170px;overflow:auto;background:rgba(8,31,40,.5)}
+.ig-pane .noteTab{background:rgba(37,70,83,.72)}
+.ig-pane .progress{background:rgba(10,32,45,.5)}
+.ig-bag{position:absolute;bottom:40px;left:14px;width:min(560px,calc(100% - 28px));pointer-events:auto;z-index:12}
+.ig-bag.is-collapsed{display:none}
+.ig-bag .tray{padding:8px 10px 7px;background:rgba(13,38,50,.56);border:1px solid rgba(141,183,178,.52);border-radius:14px;box-shadow:0 10px 22px rgba(0,0,0,.18);backdrop-filter:blur(8px)}
+.ig-bag .trayHeader{margin-bottom:5px;gap:10px;align-items:center}
+.ig-bag .trayHeader small{font-size:10px;opacity:.9}
+.ig-bag .inventory{padding-bottom:2px;gap:6px}
+.ig-bag .inv{min-height:66px;flex-basis:84px;padding:4px 3px;gap:1px;background:linear-gradient(160deg,rgba(53,88,103,.76),rgba(25,55,68,.72));border:1px solid rgba(133,173,180,.7)}
+.ig-bag .inv .glyph{font-size:22px}
+.ig-bag .inv small{font-size:9px}
+.ingame-ui>.tip{position:absolute;bottom:0;left:0;right:0;min-height:32px;max-height:42px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:rgba(13,40,50,.54);border-top:1px solid rgba(141,183,178,.35);padding:8px 14px;z-index:2;pointer-events:none;backdrop-filter:blur(6px)}
+.room-bottom{background:rgba(9,33,42,.42);border:1px solid rgba(255,255,255,.14)}
+/* Les finestres flotants no interfereixen amb l'arrossegament de persones ni les fletxes. */
+@media(max-width:850px){
+ .sceneTitle{max-width:min(64%,360px);padding:12px 14px}
+ .ig-dock{right:8px;top:10px;max-width:86%;gap:4px;padding:6px}
+ .ig-tab{padding:6px 8px}.ig-tab b{display:none}.ig-tab span{font-size:19px}
+ .ig-windows{top:64px;right:8px;max-height:calc(100% - 170px)}
+ .ig-pane{width:min(315px,calc(100vw - 20px));max-height:min(250px,38vh)}
+ .ig-bag{left:8px;bottom:35px;width:min(470px,calc(100% - 16px))}
+ .ig-bag .trayHeader small{display:none}
+ .ig-bag .inv{min-height:62px;flex-basis:76px}.ig-bag .inv .glyph{font-size:21px}
+ .ingame-ui>.tip{max-height:37px;min-height:30px;padding:6px 10px;font-size:11px}
+}
+@media(max-width:600px){
+ .sceneTitle{top:10px;left:10px;max-width:72%;padding:10px 12px;border-radius:14px}
+ .sceneTitle b{font-size:14px}.sceneTitle small{font-size:10px}.sceneStats{gap:5px}.sceneStat{font-size:10px;padding:3px 7px}
+ .ig-dock{max-width:240px}
+ .ig-windows{top:60px;gap:6px}
+ .ig-pane{padding:10px;max-height:min(224px,36vh)}
+ .ig-bag{width:calc(100% - 16px)}
+ .ig-bag .tray{padding:6px 7px}.ig-bag .inventory{gap:5px}
+ .ig-bag .inv{flex-basis:72px;min-height:58px}.ig-bag .inv b{font-size:9px}
+}
+
+/* V14 — Zona de joc espaiosa + lateral de consulta sense superposicions.
+   Cap finestra no té scroll intern: és el document el que creix. */
+.layout{max-width:1760px;padding:0 18px 28px}
+header,footer{max-width:1760px}
+.stage-shell{
+ --side-width:0px;
+ display:grid;grid-template-columns:minmax(0,1fr) var(--side-width);
+ grid-template-rows:auto;
+ position:relative;min-height:810px;align-items:stretch;
+ background:rgba(13,38,46,.25);
+ border:1px solid rgba(188,226,215,.32);
+ transition:grid-template-columns .22s ease;
+}
+.stage-shell.has-side{--side-width:370px}
+.stageTop{display:none!important}
+.worldScroller{grid-column:1;grid-row:1;min-width:0;height:100%;align-self:stretch;overflow:hidden;background:#b4d5c2}
+.world{min-height:810px;height:100%;width:100%;overflow:hidden}
+.sceneTitle{
+ top:23px;left:30px;max-width:330px;padding:16px 18px;gap:11px;
+ background:rgba(13,43,51,.30)!important;
+ border:1px solid rgba(239,255,249,.29);
+ box-shadow:0 9px 24px rgba(0,0,0,.13);
+ backdrop-filter:blur(7px);
+}
+.sceneTitle .sceneStat{background:rgba(9,34,42,.22);border-color:rgba(255,255,255,.18)}
+.ingame-ui{display:contents}
+.ig-dock{
+ top:18px;right:18px;max-width:fit-content;
+ background:rgba(11,37,47,.19);border:1px solid rgba(210,255,241,.16);
+ padding:7px;gap:7px;border-radius:17px;box-shadow:0 6px 15px #0002;
+ backdrop-filter:blur(7px);
+}
+.ig-tab{
+ min-height:40px;background:rgba(14,44,53,.39);
+ border:1px solid rgba(228,255,251,.33);
+ box-shadow:0 3px 9px rgba(0,0,0,.13)
+}
+.ig-tab[aria-expanded="true"]{background:rgba(25,119,103,.55);border-color:rgba(177,255,220,.82)}
+.ig-windows{
+ position:relative;top:auto;right:auto;width:auto;max-height:none;
+ grid-column:2;grid-row:1;z-index:9;
+ padding:88px 13px 65px;
+ display:flex;flex-direction:column;align-items:stretch;gap:12px;
+ background:rgba(12,36,45,.17);
+ border-left:0 solid rgba(229,255,249,.15);
+ pointer-events:none;min-width:0;
+}
+.stage-shell.has-side .ig-windows{border-left-width:1px;pointer-events:auto}
+.ig-pane{
+ display:none;width:100%;max-height:none;overflow:visible;
+ padding:17px 18px;border-radius:16px;
+ background:rgba(19,52,62,.30)!important;
+ border:1px solid rgba(209,240,229,.38);
+ box-shadow:0 9px 23px rgba(0,0,0,.14);
+ backdrop-filter:blur(8px);pointer-events:auto;
+}
+.ig-pane.is-open{display:block}
+.ig-pane .message,.ig-pane .noteBody{
+ background:rgba(12,39,47,.26)!important;
+}
+.ig-pane[data-panel="notes"] .noteBody{max-height:none;overflow:visible}
+.ig-pane .noteTabs{gap:7px}
+.ig-pane .noteTab{background:rgba(27,73,78,.48)}
+.ig-pane .uiBtn{background:rgba(30,78,85,.55)}
+.ig-pane h2{font-size:15px}
+.ig-bag{
+ left:20px;right:auto;bottom:42px;
+ width:min(645px,calc(100% - var(--side-width) - 40px));max-height:none;
+}
+.ig-bag .tray{
+ padding:7px 11px;background:rgba(11,41,50,.32)!important;
+ border:1px solid rgba(205,249,238,.42);
+ box-shadow:0 6px 17px rgba(0,0,0,.12);
+ backdrop-filter:blur(6px);
+}
+.ig-bag .trayHeader{margin-bottom:4px}
+.ig-bag .inv{
+ flex-basis:79px;min-height:65px;
+ background:rgba(24,64,72,.46);
+ border:1px solid rgba(211,248,241,.4);
+}
+.ig-bag .inv.active{background:rgba(17,112,95,.65)}
+.ig-bag .inv .glyph{font-size:23px}
+.ig-bag .inv small{font-size:9px}
+.ingame-ui>.tip{
+ bottom:0;right:var(--side-width);left:0;
+ background:rgba(11,43,50,.35);border-top-color:rgba(226,255,246,.22);
+}
+.room-bottom{background:rgba(9,33,42,.27)}
+/* Exposa les zones d'ús dels laterals sense ocupar el centre. */
+.arrow{background:rgba(15,48,59,.5);border-color:rgba(245,255,237,.68)}
+/* Lateral a sota del mapa en pantalles on una columna en retallaria l'escena. */
+@media(max-width:1120px){
+ .stage-shell,.stage-shell.has-side{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;--side-width:0px}
+ .worldScroller{grid-column:1;grid-row:1;height:auto}
+ .world{height:750px;min-height:750px}
+ .ig-windows{grid-column:1;grid-row:2;padding:0 14px 14px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:10px;background:rgba(11,34,42,.12)}
+ .ig-pane{max-height:none}
+ .stage-shell.has-side .ig-windows{padding-top:14px;border-left:0;border-top:1px solid rgba(229,255,249,.18)}
+ .ig-bag{width:min(600px,calc(100% - 25px));left:12px;bottom:auto;top:610px}
+ .ig-dock{top:14px;right:14px}
+ .ingame-ui>.tip{bottom:auto;top:calc(750px - 34px);right:0}
+ .sceneTitle{max-width:min(360px,42%)}
+}
+@media(max-width:680px){
+ .layout{padding:0 7px 17px}
+ .stage-shell{min-height:0}
+ .worldScroller{overflow-x:auto;overflow-y:hidden}
+ .world{min-width:820px;width:820px;height:700px;min-height:700px}
+ .sceneTitle{max-width:320px;top:12px;left:16px;padding:12px 14px}
+ .ig-dock{top:136px;right:9px;gap:5px;padding:5px;max-width:fit-content}
+ .ig-tab{padding:5px 7px;min-height:38px}
+ .ig-tab b{display:none}
+ .ig-tab span{font-size:21px}
+ .ig-windows{display:flex;flex-direction:column;padding:0 9px 9px;gap:9px}
+ .ig-bag{top:568px;left:8px;width:calc(100% - 16px)}
+ .ig-bag .trayHeader small{display:none}
+ .ig-bag .inv{flex-basis:73px;min-height:62px}
+ .ingame-ui>.tip{top:calc(700px - 34px);bottom:auto}
+ .room-bottom{bottom:38px}
+}
+
+
+/* V15 — Franja superior compacta i HUD integrat a l'escenari */
+header{
+  max-width:1760px;min-height:60px;padding:7px 17px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:14px;flex-wrap:nowrap;
+}
+header .logo{gap:9px;min-width:0;flex:0 1 auto}
+header .seal{width:39px;height:39px;min-width:39px;border-radius:10px;font-size:22px}
+header h1{font-size:19px;line-height:1.1;white-space:nowrap;letter-spacing:-.4px}
+header p{font-size:11px;line-height:1.2;margin-top:2px;white-space:nowrap}
+header .hud{flex-wrap:nowrap;justify-content:flex-end;gap:6px;min-width:0}
+header .hud>span,header .hud>.uiBtn{
+  height:38px;min-height:38px;padding:0 9px;border-radius:9px;
+  display:inline-flex;align-items:center;justify-content:center;gap:4px;
+  font-size:11px;white-space:nowrap;line-height:1;
+}
+header .hud b{font-size:15px;line-height:1}
+header .hud .urgent b{font-size:17px}
+.layout{max-width:1760px;padding:0 12px 18px}
+.stage-shell,.stage-shell.has-side{
+ --side-width:0px!important;
+ position:relative!important;display:block!important;
+ min-height:0!important;height:clamp(640px,calc(100dvh - 82px),1000px)!important;
+ overflow:hidden!important;isolation:isolate;
+ border-radius:17px;
+ background:#b4d5c2;
+}
+.stageTop{display:none!important}
+.worldScroller{
+ display:block!important;position:absolute!important;inset:0!important;
+ height:100%!important;width:100%!important;
+ overflow:hidden!important;background:#d8d1af;
+}
+.world{
+ width:100%!important;height:100%!important;min-width:0!important;
+ min-height:0!important;overflow:hidden!important;
+ background:linear-gradient(145deg,#e8dcb9,#9ec4bd);
+}
+.scenery{width:100%;height:100%}
+.sceneTitle{top:17px;left:19px;max-width:min(330px,36%);padding:11px 14px;gap:6px;
+ background:rgba(15,47,54,.26)!important;
+ border-color:rgba(241,255,250,.24);backdrop-filter:blur(5px);
+ box-shadow:0 5px 17px rgba(0,0,0,.12)
+}
+.sceneStat{padding:3px 7px;background:rgba(8,37,42,.18)!important}
+.ingame-ui{position:absolute!important;inset:0!important;display:block!important;z-index:35;pointer-events:none}
+.ig-dock{
+ position:absolute!important;top:14px!important;right:14px!important;
+ display:flex;flex-wrap:wrap;gap:5px;
+ max-width:min(540px,55%);width:max-content;
+ border:1px solid rgba(241,255,250,.22);
+ padding:5px;border-radius:13px;
+ background:rgba(12,42,49,.19)!important;
+ backdrop-filter:blur(7px);box-shadow:0 4px 14px rgba(0,0,0,.12);
+ z-index:18;pointer-events:auto;
+}
+.ig-tab{padding:6px 8px;min-height:33px;background:rgba(14,54,59,.38)!important;
+ border:1px solid rgba(225,255,249,.34);box-shadow:none;border-radius:9px;font-size:10px}
+.ig-tab[aria-expanded="true"]{background:rgba(24,125,104,.53)!important}
+.ig-tab span{font-size:16px}
+.ig-windows{
+ position:absolute!important;top:65px!important;right:13px!important;left:auto!important;
+ width:min(286px,31%)!important;max-height:calc(100% - 186px)!important;
+ display:flex!important;flex-direction:column!important;align-items:stretch!important;
+ gap:7px!important;padding:0!important;margin:0!important;
+ background:transparent!important;border:0!important;
+ overflow-y:auto!important;scrollbar-width:none;
+ z-index:16;pointer-events:none;
+}
+.ig-windows::-webkit-scrollbar{display:none}
+.stage-shell.has-side .ig-windows{padding:0!important;border:0!important}
+.ig-pane{
+ display:none;width:100%!important;max-height:none!important;overflow:visible!important;
+ padding:10px 11px!important;border-radius:12px;
+ background:rgba(10,44,51,.33)!important;
+ border:1px solid rgba(204,255,241,.3)!important;
+ box-shadow:0 6px 17px rgba(0,0,0,.13)!important;
+ backdrop-filter:blur(7px);pointer-events:auto;
+}
+.ig-pane.is-open{display:block!important}
+.ig-pane h2{font-size:12px!important;margin:0 0 6px}
+.ig-pane p{font-size:11px;line-height:1.35;margin-bottom:6px}
+.ig-pane .message{min-height:0!important;padding:8px;font-size:11px;line-height:1.4;
+ background:rgba(7,34,42,.22)!important}
+.ig-pane .sideActions{gap:4px;margin-top:7px}
+.ig-pane .uiBtn{padding:6px 7px;font-size:10px;background:rgba(22,73,76,.42)!important}
+.ig-pane .quest{padding:5px 0;font-size:11px}
+.ig-pane .quest small{font-size:10px;line-height:1.3}
+.ig-pane .noteBox{padding-top:5px}
+.ig-pane .noteTabs{gap:4px;margin-bottom:5px}
+.ig-pane .noteTab{padding:4px 6px;font-size:10px;background:rgba(24,73,77,.38)!important}
+.ig-pane[data-panel="notes"] .noteBody{max-height:none!important;overflow:visible!important;
+ font-size:11px;padding:8px;background:rgba(7,34,42,.2)!important}
+.ig-pane .hint-note{font-size:10px}
+.ig-bag{
+ position:absolute!important;bottom:39px!important;top:auto!important;
+ left:50%!important;right:auto!important;
+ transform:translateX(-50%);
+ width:max-content!important;max-width:calc(100% - 56px)!important;
+ z-index:15;pointer-events:auto;
+}
+.ig-bag.is-collapsed{display:none!important}
+.ig-bag .tray{padding:5px 9px 6px!important;
+ background:rgba(13,48,55,.33)!important;
+ border:1px solid rgba(213,255,244,.34);
+ box-shadow:0 5px 16px rgba(0,0,0,.13);
+ border-radius:13px;backdrop-filter:blur(8px)}
+.ig-bag .trayHeader{margin-bottom:3px;justify-content:center;gap:12px}
+.ig-bag .trayHeader b{font-size:11px}.ig-bag .trayHeader small{font-size:9px}
+.ig-bag .inventory{width:max-content;max-width:100%;overflow-x:auto;
+ gap:5px;padding:2px 2px 4px}
+.ig-bag .inv{flex:0 0 71px;min-height:58px;padding:3px 2px;
+ background:rgba(25,72,81,.4)!important;border:1px solid rgba(214,250,245,.38)}
+.ig-bag .inv .glyph{font-size:21px}
+.ig-bag .inv b{font-size:9px}.ig-bag .inv small{font-size:8px}
+.ingame-ui>.tip{position:absolute!important;left:0;right:0!important;
+ bottom:0!important;top:auto!important;
+ min-height:30px;max-height:32px;padding:6px 13px;
+ background:rgba(13,49,57,.26)!important;border-color:rgba(222,255,248,.15)}
+.room-bottom{bottom:125px;background:rgba(9,33,42,.18)}
+.arrow{background:rgba(15,48,59,.38);border-color:rgba(245,255,237,.48)}
+/* Alinea els elements interactius al centre i deixa espai per als panells del costat dret. */
+.world-node .objectIcon{width:52px;height:52px;font-size:29px;border-radius:14px}
+.world-node.person .personAvatar{font-size:58px}
+@media(max-width:1120px){
+ header{gap:8px;padding:6px 10px}header h1{font-size:17px}
+ header .hud{gap:4px}header .hud>span,header .hud>.uiBtn{padding:0 7px;font-size:10px;height:34px;min-height:34px}
+ .stage-shell,.stage-shell.has-side{height:clamp(630px,calc(100dvh - 74px),900px)!important}
+ .ig-windows{width:min(270px,34%)!important}
+ .ig-dock{max-width:56%}
+ .ig-bag .trayHeader small{display:none}
+}
+@media(max-width:680px){
+ header{flex-wrap:wrap;min-height:0;gap:6px}
+ header .logo{flex:1 1 100%;justify-content:center}
+ header .logo .seal{width:30px;height:30px;min-width:30px;font-size:17px}
+ header h1{font-size:17px}header p{font-size:9px}
+ header .hud{flex:1;justify-content:center;gap:4px}
+ header .hud>span,header .hud>.uiBtn{height:31px;min-height:31px;padding:0 6px;font-size:10px}
+ header .hud b{font-size:12px}
+ .stage-shell,.stage-shell.has-side{height:clamp(650px,calc(100dvh - 106px),850px)!important}
+ .worldScroller{overflow-x:auto!important;overflow-y:hidden!important}
+ .world{min-width:760px!important;width:760px!important;height:100%!important;touch-action:pan-x}
+ .sceneTitle{left:10px;top:8px;max-width:280px}
+ .ig-dock{right:8px!important;top:9px!important;max-width:240px;gap:3px;padding:4px}
+ .ig-tab{padding:5px 6px;min-height:30px}.ig-tab b{display:none}.ig-tab span{font-size:17px}
+ .ig-windows{top:52px!important;right:7px!important;width:min(244px,65%)!important;
+   max-height:calc(100% - 175px)!important;gap:5px!important}
+ .ig-pane{padding:8px!important}.ig-pane h2{font-size:11px!important}
+ .ig-bag{bottom:38px!important;max-width:calc(100% - 18px)!important}
+ .ig-bag .inv{flex-basis:64px;min-height:54px}
+ .room-bottom{bottom:120px}
+ .mobileNav{top:48%!important}
+}
+
+
+/* V16 — mapa panoràmic arrossegable i controls sempre accessibles */
+/* Cartell i indicacions fixos sobre la finestra, no es mouen amb el mapa. */
+.stage-shell>.sceneTitle{position:absolute!important;top:17px!important;left:19px!important;z-index:32!important;pointer-events:none}
+.stage-shell>.room-bottom{position:absolute!important;z-index:32!important;pointer-events:none}
+@media(max-width:680px){.stage-shell>.sceneTitle{top:8px!important;left:10px!important}.stage-shell>.room-bottom{top:114px!important;left:12px!important}}
+
+.stage-shell,.stage-shell.has-side{height:clamp(720px,calc(100dvh - 77px),1120px)!important}
+.worldScroller{
+ overflow-x:auto!important;overflow-y:hidden!important;
+ overscroll-behavior-x:contain;scrollbar-width:none;touch-action:pan-x;
+ cursor:grab;
+}
+.worldScroller::-webkit-scrollbar{display:none}
+.worldScroller.is-panning,.worldScroller.is-panning .world{cursor:grabbing!important}
+.world{
+ width:max(121%,1230px)!important;min-width:1230px!important;
+ max-width:none!important;height:100%!important;
+ touch-action:pan-x;
+}
+.scenery{object-fit:fill}
+/* Les fletxes no formen part del mapa: no es desplacen en explorar-lo. */
+.world .arrow{display:none!important}
+.mobileNav{
+ display:grid!important;place-items:center;position:absolute!important;
+ top:50%!important;transform:translateY(-50%);z-index:55!important;
+ width:34px!important;height:52px!important;
+ padding:0;border:1px solid rgba(239,255,246,.55)!important;
+ border-radius:11px!important;background:rgba(15,49,59,.46)!important;
+ color:white;font-size:21px!important;box-shadow:0 5px 16px #0004;
+ cursor:pointer;backdrop-filter:blur(5px);
+}
+.mobileNav:hover{background:rgba(15,107,100,.75)!important}
+.mobileNavLeft{left:8px!important}.mobileNavRight{right:8px!important}
+/* L'ajuda contextual queda a la part alta del mapa, fora de la motxilla. */
+.room-bottom{
+ top:121px!important;bottom:auto!important;left:20px!important;
+ transform:none!important;max-width:280px;white-space:normal;
+ padding:5px 9px;font-size:10px;line-height:1.35;
+ border-radius:8px;background:rgba(12,43,52,.34)!important;
+}
+/* La motxilla és flotant i s'atura abans de la franja inferior. */
+.ig-bag{bottom:47px!important;z-index:16!important}
+.ig-bag .tray{background:rgba(13,48,55,.30)!important}
+.ingame-ui>.tip{z-index:3!important}
+/* Els panells es poden estendre fins pràcticament al peu de l'escena. */
+.ig-windows{
+ top:65px!important;bottom:8px!important;
+ max-height:none!important;height:auto!important;
+ overflow-y:auto!important;overscroll-behavior:contain;
+ padding-bottom:5px!important;
+ scrollbar-width:thin;scrollbar-color:rgba(179,229,214,.35) transparent;
+}
+.ig-windows::-webkit-scrollbar{display:block;width:4px}
+.ig-windows::-webkit-scrollbar-thumb{background:rgba(179,229,214,.35);border-radius:10px}
+@media(max-width:1120px){
+ .stage-shell,.stage-shell.has-side{height:clamp(720px,calc(100dvh - 77px),1020px)!important}
+ .world{width:max(135%,1250px)!important;min-width:1250px!important}
+}
+@media(max-width:680px){
+ .stage-shell,.stage-shell.has-side{height:clamp(710px,calc(100dvh - 112px),950px)!important}
+ .worldScroller{overflow-x:auto!important;touch-action:pan-x}
+ .world{width:1050px!important;min-width:1050px!important;touch-action:pan-x}
+ .room-bottom{top:108px!important;left:12px!important;max-width:225px;font-size:9px}
+ .ig-windows{top:52px!important;bottom:6px!important;max-height:none!important}
+ .ig-bag{bottom:45px!important}
+ .mobileNav{width:29px!important;height:45px!important;font-size:18px!important}
+ .mobileNavLeft{left:5px!important}.mobileNavRight{right:5px!important}
+}
+
+
+/* V17 — Retorn a la disposició externa d'inventari i panells; mapa estàtic. */
+.layout{display:grid!important;grid-template-columns:minmax(0,1fr) 310px!important;gap:14px!important;align-items:start!important;max-width:1500px!important}
+.stage-shell,.stage-shell.has-side{display:flex!important;flex-direction:column!important;height:auto!important;min-height:0!important;overflow:hidden!important;position:relative!important}
+.worldScroller{display:block!important;position:relative!important;width:100%!important;height:auto!important;overflow:hidden!important;touch-action:auto!important;cursor:default!important;flex:none!important}
+.world{width:100%!important;min-width:0!important;max-width:none!important;height:clamp(480px,54vw,745px)!important;overflow:hidden!important;touch-action:none!important;cursor:default!important}
+.scenery{object-fit:fill!important}
+/* Fixed navigation stays small and accessible. */
+.mobileNav{display:grid!important;place-items:center;position:absolute!important;top:340px!important;transform:translateY(-50%)!important;z-index:55!important;width:34px!important;height:49px!important;padding:0!important;border:1px solid rgba(239,255,246,.55)!important;border-radius:11px!important;background:rgba(15,49,59,.53)!important;color:white!important;font-size:19px!important;cursor:pointer}
+.mobileNavLeft{left:7px!important}.mobileNavRight{right:7px!important}
+.world .arrow{display:none!important}
+.stage-shell>.sceneTitle{position:absolute!important;left:16px!important;top:16px!important;z-index:20!important;max-width:min(54%,370px)!important;pointer-events:none!important}
+.stage-shell>.room-bottom{position:absolute!important;top:125px!important;bottom:auto!important;left:16px!important;transform:none!important;max-width:275px!important;white-space:normal!important;background:rgba(12,43,52,.35)!important;z-index:19!important}
+.external-bag{display:block!important;position:relative!important;inset:auto!important;max-height:none!important;width:100%!important;z-index:2!important;padding:10px 12px 6px!important;pointer-events:auto!important;background:rgba(15,41,53,.82)!important;border-top:1px solid rgba(141,183,178,.25)!important}
+.external-bag .tray{background:transparent!important;border:0!important;box-shadow:none!important;padding:3px 2px!important;backdrop-filter:none!important}
+.external-bag .trayHeader{margin-bottom:7px!important}
+.external-bag .inventory{display:flex!important;gap:8px!important;overflow-x:auto!important;padding-bottom:8px!important}
+.external-bag .inv{flex:0 0 87px!important;min-height:81px!important;padding:6px 4px!important}
+.external-bag .inv .glyph{font-size:26px!important}
+.external-tip{position:relative!important;inset:auto!important;min-height:36px!important;max-height:none!important;white-space:normal!important;overflow:visible!important;text-overflow:clip!important;padding:9px 14px!important;background:rgba(15,41,53,.8)!important;border-top:1px solid rgba(141,183,178,.25)!important;pointer-events:none!important}
+.external-sidebar{display:flex!important;flex-direction:column!important;gap:12px!important;min-width:0!important}
+.external-card{display:block!important;position:relative!important;width:100%!important;max-width:none!important;max-height:none!important;height:auto!important;overflow:visible!important;pointer-events:auto!important;backdrop-filter:none!important;background:linear-gradient(160deg,rgba(25,55,69,.96),rgba(17,43,56,.96))!important;border:1px solid #50757c!important;padding:13px!important;border-radius:13px!important}
+.external-card .message{min-height:83px!important}
+.external-card[data-panel=notes] .noteBody,.external-card .noteBody{max-height:none!important;overflow:visible!important}
+.debug{grid-column:1/-1!important;display:block!important;margin-top:0!important}
+@media(max-width:1020px){
+ .layout{grid-template-columns:minmax(0,1fr)!important}
+ .external-sidebar{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .debug{grid-column:1!important}
+}
+@media(max-width:620px){
+ .layout{padding:0 8px 18px!important;gap:12px!important}
+ .world{height:510px!important;min-width:0!important;width:100%!important}
+ .stage-shell>.sceneTitle{top:9px!important;left:9px!important;max-width:72%!important}
+ .stage-shell>.room-bottom{top:117px!important;left:10px!important;max-width:225px!important;font-size:9px!important}
+ .mobileNav{top:280px!important;width:29px!important;height:44px!important;font-size:18px!important}
+ .external-sidebar{display:flex!important;flex-direction:column!important}
+ .external-bag{padding:8px!important}
+ .external-bag .trayHeader small{display:none!important}
+ .external-bag .inv{flex-basis:79px!important;min-height:72px!important}
+ .debug.open .debugPanel{grid-template-columns:1fr!important}
+}
+
+/* V18 — Inventari compacte i tota la llista de debug visible */
+@media (min-width:1021px){
+  .world{height:clamp(420px,calc(100dvh - 192px),755px)!important}
+}
+.external-bag{
+  padding:4px 10px 3px!important;
+  background:rgba(15,41,53,.67)!important;
+}
+.external-bag .tray{padding:1px 2px!important}
+.external-bag .trayHeader{margin-bottom:3px!important}
+.external-bag .trayHeader b{font-size:12px!important}
+.external-bag .trayHeader small{font-size:10px!important}
+.external-bag .inventory{gap:5px!important;padding-bottom:3px!important}
+.external-bag .inv{
+  flex:0 0 73px!important;
+  min-height:62px!important;
+  padding:3px 3px!important;
+  border-radius:9px!important;
+  gap:1px!important
+}
+.external-bag .inv .glyph{font-size:20px!important;line-height:1.05!important}
+.external-bag .inv b{font-size:9px!important;line-height:1.12!important}
+.external-bag .inv small{font-size:8px!important}
+.external-tip:empty{display:none!important}
+.external-tip:not(:empty){padding:5px 10px!important;min-height:0!important;font-size:11px!important}
+.external-card .message:empty{display:none}
+#ideals,.debugTasks{
+  max-height:none!important;
+  height:auto!important;
+  overflow:visible!important
+}
+.debug.open .debugPanel{
+  align-items:start!important;
+}
+@media(max-width:620px){
+  .external-bag{padding:4px 6px!important}
+  .external-bag .inv{flex-basis:68px!important;min-height:58px!important}
+  .external-bag .inv .glyph{font-size:19px!important}
+}
+
+
+/* V20 — Millora visual: personatges amb cos, objectes sense requadre i fons més rics */
+.world{background:#cfe7ef}
+.scenery{inset:0;width:100%;height:100%}
+.world-node:not(.person){min-width:42px;max-width:120px;z-index:4}
+.world-node:not(.person) .objectIcon{
+  width:auto!important;height:auto!important;min-width:0!important;
+  background:none!important;border:0!important;box-shadow:none!important;border-radius:0!important;
+  font-size:42px!important;line-height:1;filter:drop-shadow(0 8px 10px rgba(7,27,35,.30));
+  transition:transform .14s,filter .14s
+}
+.world-node:not(.person):hover .objectIcon,.world-node:not(.person):focus-visible .objectIcon{
+  transform:translateY(-4px) scale(1.08)!important;filter:drop-shadow(0 12px 14px rgba(7,27,35,.38))
+}
+.world-node.fixed .objectIcon,.world-node.running .objectIcon{background:none!important;border:0!important;box-shadow:none!important}
+.world-node[data-spot="rest"] .objectIcon,.world-node[data-spot="shade"] .objectIcon,.world-node[data-spot="sun"] .objectIcon{font-size:50px!important}
+.world-node[data-spot="manual"] .objectIcon,.world-node[data-spot="poster"] .objectIcon,.world-node[data-spot="bulletin"] .objectIcon,.world-node[data-spot="leaflet"] .objectIcon{font-size:38px!important}
+.world-node.person{min-width:118px;max-width:170px;gap:2px}
+.personAvatar{font-size:0!important;width:92px;height:118px;display:block;position:relative;filter:drop-shadow(0 14px 10px rgba(16,33,40,.24))}
+.character{position:relative;display:block;width:92px;height:118px;--skin:#dba37e;--shirt:#d66e57;--shirt2:#c55243;--pants:#435669;--hair:#49342c;--shoe:#2e3945}
+.character .head{position:absolute;left:50%;top:5px;transform:translateX(-50%);width:30px;height:32px;border-radius:50%;background:var(--skin);box-shadow:inset 0 -4px rgba(0,0,0,.08)}
+.character .head:before,.character .head:after{content:"";position:absolute;top:13px;width:3px;height:3px;border-radius:50%;background:#2a2221}
+.character .head:before{left:8px}.character .head:after{right:8px}
+.character .hair{position:absolute;left:50%;top:2px;transform:translateX(-50%);width:34px;height:16px;background:var(--hair);border-radius:18px 18px 8px 8px}
+.character .torso{position:absolute;left:50%;top:34px;transform:translateX(-50%);width:36px;height:39px;background:linear-gradient(var(--shirt),var(--shirt2));border-radius:12px 12px 10px 10px}
+.character .arm{position:absolute;top:39px;width:12px;height:34px;background:var(--skin);border-radius:10px}
+.character .arm.left{left:22px;transform:rotate(14deg)}.character .arm.right{right:22px;transform:rotate(-14deg)}
+.character .leg{position:absolute;top:69px;width:14px;height:34px;background:var(--pants);border-radius:10px}
+.character .leg.left{left:32px;transform:rotate(5deg)}.character .leg.right{right:32px;transform:rotate(-5deg)}
+.character .shoe{position:absolute;top:99px;width:18px;height:8px;background:var(--shoe);border-radius:9px}
+.character .shoe.left{left:27px}.character .shoe.right{right:27px}
+.character .detail{position:absolute;left:50%;top:47px;transform:translateX(-50%);width:12px;height:14px;border-radius:4px;background:rgba(255,255,255,.18)}
+.character.char-jordi{--skin:#d09b78;--shirt:#d5725f;--shirt2:#bc5946;--pants:#46576c;--hair:#6b665f}
+.character.char-jordi .hair{height:12px;background:linear-gradient(#bbb5aa,#7b766f)}
+.character.char-laia{--skin:#dfab84;--shirt:#ef9a50;--shirt2:#de6f47;--pants:#374f65;--hair:#3f2b24}
+.character.char-laia .hair{width:40px;height:21px;border-radius:18px 18px 14px 14px;background:#3d2b24}
+.character.char-maria{--skin:#d6a989;--shirt:#7c9fb0;--shirt2:#5a8699;--pants:#5d6677;--hair:#cfd2d8}
+.character.char-maria .hair{width:38px;height:18px;background:linear-gradient(#f0f2f5,#c3c8d0)}
+.world-node.person[data-placement="rest"] .character{transform:translateY(8px) scale(.97)}
+.world-node.person:hover .character,.person.selected .character{transform:translateY(-3px) scale(1.03)}
+.world-node.person[data-placement="rest"]:hover .character,.person.selected[data-placement="rest"] .character{transform:translateY(5px) scale(1.01)}
+.world-node.person .speech{background:rgba(255,251,243,.95)}
+.sceneTitle{background:rgba(14,40,52,.70)!important}
+@media(max-width:700px){
+  .personAvatar{width:76px;height:102px}.character{width:76px;height:102px}
+  .character .head{width:26px;height:28px}.character .hair{width:31px}.character.char-laia .hair,.character.char-maria .hair{width:34px}
+  .character .torso{top:30px;width:32px;height:34px}.character .arm{top:35px;height:29px}.character .leg{top:61px;height:28px}
+  .character .shoe{top:85px}.world-node:not(.person) .objectIcon{font-size:34px!important}
+}
+
+
+
+/* Els PNG dels fons ocupen tota la superfície de l’escenari. */
+.scenery image{width:100%;height:100%;}
+
+/* Pantalla de selecció externa al motor de joc */
+#gameMain[hidden],#levelMenu[hidden]{display:none!important}
+body.menuMode .hud{display:none}
+.levelMenu{max-width:1140px;margin:20px auto 80px;padding:0 20px}
+.levelMenuHead{text-align:center;margin:24px auto 28px;max-width:720px}
+.levelMenuHead small{color:#7be2c9;font-size:11px;font-weight:850;letter-spacing:.14em}
+.levelMenuHead h2{font-size:clamp(28px,4vw,43px);margin:8px 0}
+.levelMenuHead p{color:#c2d4d7;font-size:14px}
+.levelCards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.levelCard{position:relative;overflow:hidden;display:flex;flex-direction:column;background:#203846;border:1px solid #54717b;border-radius:18px;padding:16px;box-shadow:0 15px 35px #0004}
+.levelNumber{position:absolute;top:24px;left:25px;z-index:1;background:#113d46e8;border:1px solid #78d9ca;border-radius:10px;color:white;font-weight:900;font-size:20px;padding:6px 12px}
+.levelScene{overflow:hidden;border-radius:11px;aspect-ratio:1000/620;background:#8cbdc4}
+.levelScene img{width:100%;height:100%;object-fit:cover;display:block}
+.levelCard h3{font-size:20px;margin:14px 2px 6px}
+.levelCard p{font-size:13px;color:#c8dadd;line-height:1.6;margin:0 2px 12px;flex:1}
+.levelTags{display:flex;flex-wrap:wrap;gap:6px;margin:0 2px 15px}
+.levelTags span{background:#14313d;border:1px solid #446c72;padding:4px 9px;border-radius:20px;font-size:11px;color:#b5e9da}
+.levelStart{width:100%;font-weight:800;font-size:14px;background:#177d72;border-color:#8de9d1;padding:12px}
+.levelStart:hover{background:#219d89}
+@media(max-width:700px){.levelCards{grid-template-columns:1fr;gap:16px}.levelMenu{padding:0 12px}.levelCard h3{font-size:18px}}
+
+/* DEMO: ruta de trasllat caminant del Cas 02 */
+.world-node[data-spot="walk"] .objectIcon{font-size:44px!important;filter:drop-shadow(0 6px 7px #09292a88)}
+.world-node[data-spot="walk"]:focus-visible .objectName,.world-node[data-spot="walk"]:hover .objectName{opacity:1;visibility:visible}

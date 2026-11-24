@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620"><defs>
+<linearGradient id="bgR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e6f7f8"/><stop offset="1" stop-color="#bedfe0"/></linearGradient>
+</defs>
+<rect width="1000" height="620" fill="url(#bgR)"/>
+<rect y="405" width="1000" height="215" fill="#8db8b7"/>
+<rect x="0" y="0" width="1000" height="405" fill="#dfeee9"/>
+<rect x="102" y="70" width="278" height="236" rx="12" fill="#a7deea" stroke="#ffffff" stroke-width="20"/><path d="M241 70v236M102 188h278" stroke="#ffffff" stroke-width="12"/>
+<rect x="760" y="56" width="136" height="80" rx="16" fill="#f2fbfa" stroke="#80ada7" stroke-width="8"/><path d="M782 96h93" stroke="#7dc0b0" stroke-width="8" stroke-linecap="round"/>
+<g><rect x="414" y="245" width="330" height="152" rx="20" fill="#6f9692"/><rect x="438" y="208" width="282" height="82" rx="35" fill="#91bbb5"/><path d="M446 397v91m266-91v91" stroke="#507a76" stroke-width="18" stroke-linecap="round"/></g>
+<g opacity=".9"><rect x="25" y="60" width="78" height="306" rx="8" fill="#85c6b8"/><rect x="18" y="44" width="92" height="28" rx="6" fill="#4a9f8c"/><path d="M155 121l-30 42 30-7z" fill="#fff"/></g>
+<g opacity=".75"><rect x="808" y="432" width="135" height="98" rx="14" fill="#e7f4f0"/><rect x="828" y="452" width="96" height="17" rx="8" fill="#8eb6b0"/><rect x="828" y="480" width="78" height="12" rx="6" fill="#abcac4"/></g>
+<path d="M0 430h1000" stroke="#6a9d9b" stroke-width="7" opacity=".45"/><path d="M305 405v215m350-215v215m232-215v215" stroke="#84adab" stroke-width="4" opacity=".4"/><!-- wall-mounted clock and cool lighting, simple vector geometry -->
+<circle cx="572" cy="105" r="35" fill="#f8fbfa" stroke="#86b8b1" stroke-width="7"/>
+<path d="M572 105V83M572 105l16 12" stroke="#537e7a" stroke-width="5" stroke-linecap="round"/>
+<rect x="33" y="425" width="136" height="18" rx="6" fill="#558b83" opacity=".4"/>
+<path d="M170 490h106" stroke="#d9efea" stroke-width="7" opacity=".55"/>
+</svg>
